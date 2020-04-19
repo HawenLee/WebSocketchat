@@ -1,6 +1,7 @@
 package com.liu.pojo;
 
 public class User {
+        private int id;
 	   private String userid;      //ÓÃ»§Ãû
 	    private String password;    //ÃÜÂë
 	    private String nickname;    //êÇ³Æ
@@ -71,5 +72,10 @@ public class User {
 		public void setStatus(int status) {
 			this.status = status;
 		}
-	    
+        public int getId() {
+            return id;
+        }
+        public void setId(int id) {
+            this.id = id;
+        }
 }

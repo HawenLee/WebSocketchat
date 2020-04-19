@@ -16,13 +16,12 @@
 <div class="login-form">
   <div class="close"> </div>
   <div class="head-info">
-    <label class="lbl-1"></label>
-    <label class="lbl-2"></label>
-    <label class="lbl-3"></label>
-    <a href="<%=path%>/user/toregister" ><p style="font-size:30px"; font-align="left">注册</p></a> 
+    <div style="float:right;margin-right: 20px;">
+        <a href="<%=path%>/user/toregister" ><p style="font-size:30px;margin-top: 3px;"; font-align="left">注册</p></a>
+    </div>
   </div>
   <div class="clear"> </div>
-  <div class="avtar"><img src="${pageContext.request.contextPath }/static/source/img/touxiang.png" /></div>
+  <div class="avtar"><img src="${pageContext.request.contextPath}/static/source/img/touxiang.png" /></div>
   <form id="login-form" action="<%=path%>/user/login" method="post" onsubmit="return checkLoginForm()">
     <div class="key">
       <input type="text" id="username" name="userid" placeholder="请输入账号" >
@@ -32,7 +31,7 @@
       <input type="password" id="password" name="password" placeholder="请输入密码">
     </div>
     <div class="signin">
-      <input type="submit" id="submit" value="Login" >
+      <input type="submit" id="submit" value="登录" >
     </div>
   </form>
 </div>

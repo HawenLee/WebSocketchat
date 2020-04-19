@@ -143,8 +143,7 @@ public class UserController {
 	}
 //	查看日志
 	@RequestMapping("/log/{userid}")
-	public String log(@PathVariable("userid")String userid,@RequestParam("page")int page,HttpServletRequest request)
-	{
+	public String log(@PathVariable("userid")String userid,@RequestParam("page")int page,HttpServletRequest request) {
 		if( request.getSession().getAttribute("pageSize") == null){
 			request.getSession().setAttribute("pageSize", 5);
 		}
@@ -159,8 +158,7 @@ public class UserController {
 	}
 //	用于获取发送信息时的头像，使用流
 	@RequestMapping("/head/{userid}")
-	public void gethead(@PathVariable("userid")String userid,HttpServletRequest request,HttpServletResponse response) throws IOException
-	{
+	public void gethead(@PathVariable("userid")String userid,HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String realurl=request.getServletContext().getRealPath("/");
 		String imageurl=userServiceImpl.selectUserByUserId(userid).getProfilehead();
 		String url=realurl+imageurl;
@@ -183,8 +181,7 @@ public class UserController {
 	}
 //	关于
 	@RequestMapping("/about")
-	public String about()
-	{
+	public String about() {
 		return "about";
 	}
 //	系统设置
@@ -222,13 +219,11 @@ public class UserController {
 		}
 	}
 	@RequestMapping("errorinfo")
-	public String error()
-	{
+	public String error() {
 		return "errorinfo";
 	}
 	@RequestMapping("/system-set")
-	public String systemsett()
-	{
+	public String systemsett() {
 		return "system-setting";
 	}
 }

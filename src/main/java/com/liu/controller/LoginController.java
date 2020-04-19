@@ -68,8 +68,7 @@ public class LoginController {
 	}
 //	ÍË³ö
 	@RequestMapping("/logout")
-	public String logout(HttpSession session,RedirectAttributes redirectAttributes)
-	{
+	public String logout(HttpSession session,RedirectAttributes redirectAttributes) {
 		Subject subject=SecurityUtils.getSubject();
 		String result="logout1";
 		subject.logout();
@@ -77,8 +76,7 @@ public class LoginController {
 		
 	}
 	@RequestMapping("/toregister")
-	public String toregister()
-	{
+	public String toregister() {
 		return "register";
 	}
 	@RequestMapping("/register")

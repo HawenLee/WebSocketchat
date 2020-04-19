@@ -16,10 +16,9 @@
 <div class="login-form">
   <div class="close"> </div>
   <div class="head-info">
-    <label class="lbl-1"></label>
-    <label class="lbl-2"></label>
-    <label class="lbl-3"></label>
-    <a href="<%=path%>/login.jsp" ><p style="font-size:30px"; font-align="left">登陆</p></a> 
+    <div style="float:right;margin-right: 20px;">
+        <a href="<%=path%>/login.jsp" ><p style="font-size:30px;margin-top: 3px;"; font-align="left">登陆</p></a>
+    </div>
   </div>
   <div class="clear"> </div>
   <div class="avtar"><img src="${pageContext.request.contextPath }/static/source/img/touxiang.png" /></div>
@@ -31,7 +30,7 @@
       <input type="password" id="password" name="password" placeholder="请输入密码">
     </div>
       <div class="signin">
-      <input type="submit" id="submit" value="Login" >
+      <input type="submit" id="submit" value="注册" >
     </div>
   </form>
 </div>
