@@ -7,6 +7,7 @@ public class UserLog {
 	    private String type;    //类型
 	    private String detail;  //详情
 	    private String ip;      //ip地址
+
 		public int getId() {
 			return id;
 		}

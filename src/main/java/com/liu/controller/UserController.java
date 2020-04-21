@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Path;
 
+import com.liu.service.UserLogService;
+import com.liu.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,16 +34,16 @@ import com.liu.utils.DateUtil;
 @Controller
 public class UserController {
 	@Resource
-	private UserServiceImpl userServiceImpl;
+	private UserService userService;
 	@Resource
-	private UserLogServiceImpl userLogServiceImpl;
+	private UserLogService userLogService;
 	DateUtil dateUtil=new DateUtil();
 //	展示用户信息
 	@RequestMapping("information/{userid}")
 	public ModelAndView information(@PathVariable("userid")String userid)
 	{
 		ModelAndView modelAndView=new ModelAndView();
-		User user=userServiceImpl.selectUserByUserId(userid);
+		User user=userService.selectUserByUserId(userid);
 		modelAndView.addObject("user", user);
 		modelAndView.setViewName("information");
 		return modelAndView;
@@ -50,7 +52,7 @@ public class UserController {
 	@RequestMapping("infosetting/{userid}")
 	public ModelAndView infosetting(@PathVariable("userid")String userid,HttpServletRequest request){
 		ModelAndView modelAndView=new ModelAndView();
-		User user=userServiceImpl.selectUserByUserId(userid);
+		User user=userService.selectUserByUserId(userid);
 		modelAndView.addObject("user", user);
 		modelAndView.setViewName("info-setting");
 		return modelAndView;
@@ -59,7 +61,7 @@ public class UserController {
 	@RequestMapping("/updateUser/{userid}")
 	public String updateUser(User user,@PathVariable("userid")String userid,RedirectAttributes redirectAttributes,HttpServletRequest request){
 		user.setUserid(userid);
-		boolean flag=userServiceImpl.updateUser(user);
+		boolean flag=userService.updateUser(user);
 		if(flag) {
 			UserLog userLog=new UserLog();
 			String ip=request.getRemoteAddr();
@@ -68,7 +70,7 @@ public class UserController {
 			userLog.setType("修改");
 			userLog.setDetail("修改资料");
 			userLog.setIp(ip);
-			userLogServiceImpl.insertLog(userLog);
+            userLogService.insertLog(userLog);
 			redirectAttributes.addFlashAttribute("message", "["+userid+"]资料修改成功!");
 			return "redirect:/information/"+userid;
 		}else{
@@ -93,7 +95,7 @@ public class UserController {
 		User user=new User();
 		user.setUserid(userid);
 		user.setProfilehead(imageurlnotag);
-		boolean flag=userServiceImpl.updateUser(user);
+		boolean flag=userService.updateUser(user);
 		if(flag){
 			UserLog userLog=new UserLog();
 			String ip=request.getRemoteAddr();
@@ -102,7 +104,7 @@ public class UserController {
 			userLog.setType("修改");
 			userLog.setDetail("修改头像");
 			userLog.setIp(ip);
-			userLogServiceImpl.insertLog(userLog);
+            userLogService.insertLog(userLog);
 			redirectAttributes.addFlashAttribute("message", "["+userid+"]头像上传成功!");
 			return "redirect:/information/"+userid;
 		}else{
@@ -113,13 +115,13 @@ public class UserController {
 //	修改密码
 	@RequestMapping("/modifypassword/{userid}")
 	public String modifyPassowrd(@PathVariable("userid")String userid,String oldpass,String newpass,RedirectAttributes redirectAttributes,HttpServletRequest request){
-		User user=userServiceImpl.selectUserByUserId(userid);
+		User user=userService.selectUserByUserId(userid);
 		String password=user.getPassword();
 		if(password.equals(oldpass)){
 			User user1=new User();
 			user1.setPassword(newpass);
 			user1.setUserid(userid);
-			boolean flag=userServiceImpl.updateUser(user1);
+			boolean flag=userService.updateUser(user1);
 			if(flag){
 				UserLog userLog=new UserLog();
 				String ip=request.getRemoteAddr();
@@ -128,7 +130,7 @@ public class UserController {
 				userLog.setType("修改");
 				userLog.setDetail("修改密码");
 				userLog.setIp(ip);
-				userLogServiceImpl.insertLog(userLog);
+                userLogService.insertLog(userLog);
 			redirectAttributes.addFlashAttribute("message", "["+userid+"]密码修改成功!");
 			return "redirect:/information/"+userid;
 			} else {
@@ -150,8 +152,8 @@ public class UserController {
 		int pageSize=(Integer) request.getSession().getAttribute("pageSize");
 		int count;
 		List<UserLog> loglist=new ArrayList<UserLog>();
-		loglist=userLogServiceImpl.selectLogByUserid(userid, page, pageSize);
-		count=userLogServiceImpl.selectLogCountByUserid(userid, pageSize);
+		loglist=userLogService.selectLogByUserid(userid, page, pageSize);
+		count=userLogService.selectLogCountByUserid(userid, pageSize);
 		request.getSession().setAttribute("loglist", loglist);
 		request.getSession().setAttribute("count", count);
 		return "log";
@@ -160,7 +162,7 @@ public class UserController {
 	@RequestMapping("/head/{userid}")
 	public void gethead(@PathVariable("userid")String userid,HttpServletRequest request,HttpServletResponse response) throws IOException {
 		String realurl=request.getServletContext().getRealPath("/");
-		String imageurl=userServiceImpl.selectUserByUserId(userid).getProfilehead();
+		String imageurl=userService.selectUserByUserId(userid).getProfilehead();
 		String url=realurl+imageurl;
 		InputStream inputStream=new FileInputStream(url);
 		ServletOutputStream outputStream=response.getOutputStream();
@@ -187,7 +189,7 @@ public class UserController {
 //	系统设置
 	@RequestMapping("system-setting/{userid}")
 	public String systemsetting(@PathVariable("userid")String userid,HttpServletRequest request){
-		User user=userServiceImpl.selectUserByUserId(userid);
+		User user=userService.selectUserByUserId(userid);
 		request.setAttribute("user", user);
 		return "system-setting";
 	}
@@ -198,7 +200,7 @@ public class UserController {
 		User user=new User();
 		user.setUserid(userid);
 		user.setStatus(secrecy);
-		boolean flag=userServiceImpl.updateUser(user);
+		boolean flag=userService.updateUser(user);
 		if(flag) {
 			redirectAttributes.addFlashAttribute("message", "系统设置修改成功!");
 		} else {
@@ -209,7 +211,7 @@ public class UserController {
 //	其他人信息
 	@RequestMapping("otherinfo/{userid}")
 	public String otherinformation(@PathVariable("userid")String userid,HttpServletRequest request,RedirectAttributes redirectAttributes) {
-		int status=userServiceImpl.selectUserByUserId(userid).getStatus();
+		int status=userService.selectUserByUserId(userid).getStatus();
 		if(status==-1) {
 			redirectAttributes.addFlashAttribute("error", userid+"的信息未公开!");
 			redirectAttributes.addFlashAttribute("userid", userid);
