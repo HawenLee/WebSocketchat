@@ -14,6 +14,7 @@
                     <li><a href="${ctx}/system-setting/${userid}"><span class="am-icon-cog"></span> 系统设置</a></li>
                 </ul>
             </li>
+            <li><a href="${ctx}/userList?page=1"><span class="am-icon-group"></span> 用户列表</a></li>
             <li><a href="${ctx}/log/${userid}?page=1"><span class="am-icon-inbox"></span> 系统日志<span class="am-badge am-badge-secondary am-margin-right am-fr">${lognumber }</span></a></li>
             <li><a href="${ctx}/book/findBookList?page=1"><span class="am-icon-inbox"></span> 图书馆</a></li>
 <%--             <li class="admin-parent">--%>
@@ -23,8 +24,9 @@
 <%--                    <li><a href="${ctx}/five-chess.jsp"><span class="am-icon-group"></span> 人人对战</a></li>--%>
 <%--                </ul>--%>
 <%--            </li>--%>
-            <li><a href="${ctx}/help"><span class="am-icon-globe"></span> 帮助</a></li>
-            <li><a href="${ctx}/about"><span class="am-icon-leaf"></span> 关于</a></li>
+<%--            <li><a href="${ctx}/help"><span class="am-icon-globe"></span> 帮助</a></li>--%>
+            <li><a href="${ctx}/publish"><span class="am-icon-globe"></span> 朋友圈</a></li>
+<%--            <li><a href="${ctx}/about"><span class="am-icon-leaf"></span> 关于</a></li>--%>
             <li><a href="${ctx}/user/logout"><span class="am-icon-sign-out"></span> 注销</a></li>
         </ul>
         <div class="am-panel am-panel-default admin-sidebar-panel">

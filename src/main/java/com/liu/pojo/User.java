@@ -1,7 +1,7 @@
 package com.liu.pojo;
 
 public class User {
-        private int id;
+        private int id;				//自增id
 	   private String userid;      //用户名
 	    private String password;    //密码
 	    private String nickname;    //昵称

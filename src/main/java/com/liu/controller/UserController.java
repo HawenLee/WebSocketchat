@@ -143,6 +143,24 @@ public class UserController {
 		}
 		return "redirect:/infosetting/"+userid;
 	}
+
+	//用户列表
+	@RequestMapping("/userList")
+	public String findUserList(@RequestParam("page")int page,HttpServletRequest request){
+		if( request.getSession().getAttribute("pageSize") == null){
+			request.getSession().setAttribute("pageSize", 2);
+		}
+		int pageSize=(Integer) request.getSession().getAttribute("pageSize");
+		int count;
+		List<User> userList=new ArrayList<User>();
+		userList = userService.selectAll(page, pageSize);
+		count = userService.selectCount();
+		request.getSession().setAttribute("userList", userList);
+		request.getSession().setAttribute("count", count);
+		return "user_list";
+	}
+
+
 //	查看日志
 	@RequestMapping("/log/{userid}")
 	public String log(@PathVariable("userid")String userid,@RequestParam("page")int page,HttpServletRequest request) {
