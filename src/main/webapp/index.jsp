@@ -153,6 +153,7 @@
         	   var to=$("#sendto").text()=="全体成员"?"":$("#sendto").text();//获取要发送给的人，如果为全体成员则to设置为空
         	   if(message==null|message==""){
         		   layer.msg("请输入内容！",{offset:0,shift:6});
+        		   return;
         	   }
         	   $("#tuling").text()=="已上线"?tuling(message):console.log("图灵机器人未开启");//图灵机器人
         	   ws.send(JSON.stringify({  //发送信息给后台，发送的格式为JSON:{ message:{cotent:message,from:"userid",to:to,time:Daee()},type:"message" }
