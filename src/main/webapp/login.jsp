@@ -48,6 +48,9 @@
     if("${error}"){
       $('#submit').attr('value',"${error}").css('background','red');
     }
+    if("${errorInfo}"){
+      $('#submit').attr('value',"${errorInfo}").css('background','red');
+    }
     if("${registersuccess}"){
     	 layer.msg('注册成功', {
     	        offset: 0,

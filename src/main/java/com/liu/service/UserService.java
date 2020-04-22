@@ -13,4 +13,6 @@ public interface UserService {
 	boolean insertUser(User user);
 	boolean updateUser(User user);
 	boolean deleteUser(String userid);
+
+	int findExistUser(String userid);
 }

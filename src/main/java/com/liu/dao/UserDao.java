@@ -13,4 +13,6 @@ public interface UserDao {
 	boolean insertUser(User user);
 	boolean updateUser(User user);
 	boolean deleteUser(String userid);
+
+	int findExistsUser(@Param("userid") String userid);
 }

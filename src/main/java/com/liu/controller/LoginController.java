@@ -7,6 +7,8 @@ import javax.imageio.spi.RegisterableService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.liu.service.UserLogService;
+import com.liu.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -26,9 +28,9 @@ import com.liu.utils.WordDefined;
 @RequestMapping(value="/user")
 public class LoginController {
 	@Resource
-	private UserServiceImpl userServiceImpl;
+	private UserService userService;
 	@Resource
-	private UserLogServiceImpl userLogServiceImpl;
+	private UserLogService userLogService;
 	//	登陆
 	@RequestMapping("/login")
 	public String login(User user,HttpServletRequest request,RedirectAttributes redirectAttributes,WordDefined defined){
@@ -42,7 +44,7 @@ public class LoginController {
 			user2.setUserid(user.getUserid());
 			user2.setLasttime(new DateUtil().getDateformat());
 //			修改最近一次登陆日志
-			userServiceImpl.updateUser(user2);
+            userService.updateUser(user2);
 			UserLog userLog=new UserLog();
 			userLog.setUserid(user.getUserid());
 			userLog.setTime(dateUtil.getDateformat());                              
@@ -50,8 +52,8 @@ public class LoginController {
 			userLog.setDetail("用户登录");
 			userLog.setIp(ip);
 //			插入登陆日志
-			userLogServiceImpl.insertLog(userLog);
-			int lognumber=userLogServiceImpl.selectLogcountfromuserid(user.getUserid());
+            userLogService.insertLog(userLog);
+			int lognumber=userLogService.selectLogcountfromuserid(user.getUserid());
 			request.getSession().setAttribute("userid", user.getUserid());
 			request.getSession().setAttribute("login_status", true);
 			request.getSession().setAttribute("lognumber", lognumber);
@@ -80,19 +82,22 @@ public class LoginController {
 		return "register";
 	}
 	@RequestMapping("/register")
-	public String RegisterableService(User user,RedirectAttributes redirectAttributes)
-	{
+	public String RegisterableService(User user,HttpServletRequest request,RedirectAttributes redirectAttributes){
+        int result = userService.findExistUser(user.getUserid());
+        if(result == 1){
+            request.setAttribute("errorInfo", "用户已存在");
+            return "register";
+        }
 		User user1=new User();
 		user1.setUserid(user.getUserid());
 		user1.setPassword(user.getPassword());
 		user1.setNickname("无");
 		user1.setFirsttime(new DateUtil().getDateformat());
 		System.out.println();
-		if(userServiceImpl.insertUser(user1)){
+		if(userService.insertUser(user1)){
 			return "login";
 		} else {
 			return "register";
 		}
-		
 	}
 }

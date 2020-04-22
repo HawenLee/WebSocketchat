@@ -36,7 +36,10 @@
         SELECT COUNT(*)USERCOUNT
         FROM user
     </select>
-<!--     插入用户 -->
+    <select id="findExistsUser" resultType="java.lang.Integer">
+        select count(*) from user where userid = #{userid}
+    </select>
+    <!--     插入用户 -->
  	<insert id="insertUser" parameterType="com.liu.pojo.User">
  	    INSERT INTO user (USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME, LASTTIME, STATUS)
   	    VALUES (#{userid, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR}, #{nickname, jdbcType=VARCHAR}, #{sex, jdbcType=INTEGER},

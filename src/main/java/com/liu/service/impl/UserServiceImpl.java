@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.deleteUser(userid);
 	}
 
+	@Override
+	public int findExistUser(String userid) {
+		return userDao.findExistsUser(userid);
+	}
+
 }
