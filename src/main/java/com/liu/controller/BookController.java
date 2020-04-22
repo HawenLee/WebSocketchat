@@ -3,6 +3,7 @@ package com.liu.controller;
 import com.liu.pojo.Book;
 import com.liu.pojo.UserLog;
 import com.liu.service.BookService;
+import com.liu.utils.DateUtil;
 import com.liu.vo.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +38,24 @@ public class BookController {
         return "book_list";
     }
 
+    @RequestMapping("showBookDetails")
+    public String showBookDetails(@RequestParam("bookId")int bookId, HttpServletRequest request){
+        Book bookInfo = bookService.findBookDetails(bookId);
+        request.getSession().setAttribute("bookInfo", bookInfo);
+        return "book_details";
+    }
 
+    @RequestMapping("showAddInfoPage")
+    public String showAddInfoPage(){
+        return "book_add";
+    }
+    @RequestMapping("addBookInfo")
+    public String addBookInfo(Book book){
+        DateUtil dateUtil = new DateUtil();
+        book.setUpdateTime(dateUtil.getDateformat());
+        bookService.addBookInfo(book);
+        return "book_list";
+    }
 
 
 

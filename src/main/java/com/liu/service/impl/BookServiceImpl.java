@@ -27,4 +27,15 @@ public class BookServiceImpl implements BookService {
         int result = bookDao.getBookListCount();
         return result%pageSize==0?result/pageSize:result/pageSize+1;
     }
+
+    @Override
+    public Book findBookDetails(int bookId) {
+        return bookDao.findBookInfo(bookId);
+    }
+
+    @Override
+    public int addBookInfo(Book book) {
+        int result = bookDao.saveBookInfo(book);
+        return result;
+    }
 }

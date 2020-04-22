@@ -10,7 +10,7 @@ public class Book implements Serializable {
     private String bookType;//书类型
     private String bookTitle;//书标题
     private String bookContent;//书内容
-    private Date updateTime;//上传时间
+    private String updateTime;//上传时间
 
     public Integer getId() {
         return id;
@@ -52,11 +52,11 @@ public class Book implements Serializable {
         this.bookContent = bookContent;
     }
 
-    public Date getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 }

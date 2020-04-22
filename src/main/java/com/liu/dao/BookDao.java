@@ -9,4 +9,8 @@ public interface BookDao {
     Integer getBookListCount();
     List<Book> findBookListInfo(@Param("start") int start,
                                 @Param("end") int end);
+
+    Book findBookInfo(@Param("bookId") int bookId);
+
+    int saveBookInfo(Book book);
 }

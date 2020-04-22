@@ -7,4 +7,7 @@ import java.util.List;
 public interface BookService {
     List<Book> findBookList(int page, int pageSize);
     Integer selectBookCount(int pageSize);
+    Book findBookDetails(int bookId);
+
+    int addBookInfo(Book book);
 }

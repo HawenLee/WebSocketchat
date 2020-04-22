@@ -16,6 +16,7 @@
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">图书馆</strong> / <small>book</small></div>
         </div>
+        <div style="margin-left: 20px;"><input type="button" value="新增" style="color: green;" onclick="showAddBookInfoPage()"></div>
         <div class="am-tabs am-margin">
             <table class="am-table am-table-striped">
                 <thead>
@@ -30,8 +31,8 @@
                 <tbody id="showBookList">
                     <c:forEach items="${bookList}" var="book" varStatus="status">
                         <tr>
-                            <td>${book.id}</td>
-                            <td><a>${book.bookName}</a></td>
+                            <td id="${book.id}">${status.index + 1}</td>
+                            <td><a class="a-click">${book.bookName}</a></td>
                             <td>${book.bookType}</td>
                             <td>${book.bookTitle}</td>
                             <td>${book.updateTime}</td>
@@ -66,7 +67,21 @@
                 }
             }
         });
+        $("#showBookList").on("click",".a-click",getDetails);
     });
+    function getDetails(){
+        // var id = a.prev();
+        var bookId = $(this).parent().prev().attr("id");
+        window.location.href = "showBookDetails?bookId=" + bookId;
+    }
+
+
+    function showAddBookInfoPage(){
+        window.location.href = "showAddInfoPage";
+    }
+
+
+
 </script>
 </body>
 </html>
