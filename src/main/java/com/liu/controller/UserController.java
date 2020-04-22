@@ -85,7 +85,7 @@ public class UserController {
 		String real=request.getServletContext().getRealPath("/");
 		String imagename=file.getOriginalFilename();
 		System.out.println("imagename:"+imagename);
-		String imageurlnotag="/information/upload/"+userid+"/"+imagename;
+		String imageurlnotag="information\\upload\\"+userid+"\\"+imagename;
 		File file1=new File(real+"\\information\\upload"+"\\"+userid);
 		if(!file1.exists()){
 			file1.mkdirs();
