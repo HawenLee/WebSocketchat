@@ -75,7 +75,6 @@
         window.location.href = "showBookDetails?bookId=" + bookId;
     }
 
-
     function showAddBookInfoPage(){
         window.location.href = "showAddInfoPage";
     }

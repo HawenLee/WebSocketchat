@@ -48,4 +48,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.findExistsUser(userid);
 	}
 
+	@Override
+	public int selectCountForList(int pageSize) {
+		int result = userDao.selectCount();
+		return result%pageSize==0?result/pageSize:result/pageSize+1;
+	}
+
 }

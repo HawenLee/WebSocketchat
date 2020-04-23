@@ -25,17 +25,17 @@ public class BookController {
 
     @RequestMapping("findBookList")
     public String findBookList(@RequestParam("page")int page, HttpServletRequest request){
-        if( request.getSession().getAttribute("pageSize") == null){
-            request.getSession().setAttribute("pageSize", 20);
+        if( request.getSession().getAttribute("pageSize") == null){ //判断煤业显示条数是否为空
+            request.getSession().setAttribute("pageSize", 20);//为空则设置为20
         }
         int pageSize = (Integer)request.getSession().getAttribute("pageSize");
         int count;
         List<Book> bookList = new ArrayList<Book>();
-        bookList = bookService.findBookList(page, pageSize);
+        bookList = bookService.findBookList(page, pageSize);//查询数据
         count = bookService.selectBookCount(pageSize);
         request.getSession().setAttribute("bookList", bookList);
         request.getSession().setAttribute("count", count);
-        return "book_list";
+        return "book_list";//返回页面
     }
 
     @RequestMapping("showBookDetails")

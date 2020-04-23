@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.liu.dao.PublishDao">
+
+    <insert id="savePublishInfo">
+        insert into publish(id,userid,publish_content,publish_time)
+        values(#{id},#{userId},#{publishContent},#{publishTime})
+    </insert>
+
+    <select id="getPublishListCount" resultType="int">
+        select Count(*) from publish
+    </select>
+
+    <select id="findPublishListInfo" resultMap="publishMap">
+        select * from publish order by publish_time desc
+        limit #{start}, #{end}
+    </select>
+
+    <resultMap id="publishMap" type="com.liu.pojo.Publish">
+        <id column="id" property="id"/>
+        <result column="userid" property="userId"/>
+        <result column="publish_content" property="publishContent"/>
+        <result column="publish_time" property="publishTime"/>
+    </resultMap>
+
+</mapper>

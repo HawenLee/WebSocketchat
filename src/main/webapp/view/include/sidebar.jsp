@@ -25,7 +25,7 @@
 <%--                </ul>--%>
 <%--            </li>--%>
 <%--            <li><a href="${ctx}/help"><span class="am-icon-globe"></span> 帮助</a></li>--%>
-            <li><a href="${ctx}/publish"><span class="am-icon-globe"></span> 朋友圈</a></li>
+            <li><a href="${ctx}/publish/showPublishPage?page=1"><span class="am-icon-globe"></span> 朋友圈</a></li>
 <%--            <li><a href="${ctx}/about"><span class="am-icon-leaf"></span> 关于</a></li>--%>
             <li><a href="${ctx}/user/logout"><span class="am-icon-sign-out"></span> 注销</a></li>
         </ul>

@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>WebChat | 用户列表</title>
+    <title>WebChat | 朋友圈</title>
     <jsp:include page="view/include/commonfile.jsp"/>
 </head>
 <body>
@@ -14,35 +14,28 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户列表</strong> / <small>user list</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">朋友圈</strong> / <small>publish</small></div>
         </div>
+        <div style="margin-left: 20px;"><input type="button" value="新增" style="color: green;" onclick="showAddPublishInfoPage()"></div>
         <div class="am-tabs am-margin">
             <table class="am-table am-table-striped">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>用户名</th>
-                        <th>昵称</th>
-                        <th>性别</th>
-                        <th>年龄</th>
-                        <th>简介</th>
-                        <th>注册时间</th>
-                        <th>最后登录</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>发表人</th>
+                    <th>内容</th>
+                    <th>发表时间</th>
+                </tr>
                 </thead>
                 <tbody id="showBookList">
-                    <c:forEach items="${userList}" var="user" varStatus="status">
-                        <tr>
-                            <td>${status.index + 1}</td>
-                            <td id="${user.id}">${user.userid}</td>
-                            <td>${user.nickname}</td>
-                            <td>${user.sex}</td>
-                            <td>${user.age}</td>
-                            <td>${user.profile}</td>
-                            <td>${user.firsttime}</td>
-                            <td>${user.lasttime}</td>
-                        </tr>
-                    </c:forEach>
+                <c:forEach items="${publishList}" var="publishList" varStatus="status">
+                    <tr>
+                        <td id="${publishList.id}">${status.index + 1}</td>
+                        <td>${publishList.userId}</td>
+                        <td>${publishList.publishContent}</td>
+                        <td>${publishList.publishTime}</td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
             <div id="page" style="float: right"></div>
@@ -60,7 +53,7 @@
         laypage({
             cont: 'page',
             pages:${count},
-            curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取    
+            curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取
                 var page = location.search.match(/page=(\d+)/);
                 return page ? page[1] : 1;
             }(),
@@ -72,13 +65,14 @@
                 }
             }
         });
-        $("#showBookList").on("click",".a-click",getDetails);
     });
-    function getDetails(){
-        // var id = a.prev();
-        var bookId = $(this).parent().prev().attr("id");
-        window.location.href = "showBookDetails?bookId=" + bookId;
+
+    function showAddPublishInfoPage(){
+        window.location.href = "showAddInfoPage";
     }
+
+
+
 </script>
 </body>
 </html>

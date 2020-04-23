@@ -15,4 +15,6 @@ public interface UserService {
 	boolean deleteUser(String userid);
 
 	int findExistUser(String userid);
+
+    int selectCountForList(int pageSize);
 }

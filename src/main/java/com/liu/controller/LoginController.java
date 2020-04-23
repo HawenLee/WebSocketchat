@@ -83,7 +83,7 @@ public class LoginController {
 	}
 	@RequestMapping("/register")
 	public String RegisterableService(User user,HttpServletRequest request,RedirectAttributes redirectAttributes){
-        int result = userService.findExistUser(user.getUserid());
+        int result = userService.findExistUser(user.getUserid());//查询是否重复账号
         if(result == 1){
             request.setAttribute("errorInfo", "用户已存在");
             return "register";
@@ -93,11 +93,10 @@ public class LoginController {
 		user1.setPassword(user.getPassword());
 		user1.setNickname("无");
 		user1.setFirsttime(new DateUtil().getDateformat());
-		System.out.println();
 		if(userService.insertUser(user1)){
-			return "login";
+			return "login";//注册成功跳转到登录页面
 		} else {
-			return "register";
+			return "register";//注册不成功，停留在注册页面
 		}
 	}
 }
