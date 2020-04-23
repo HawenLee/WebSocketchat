@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>WebChat | 图书馆</title>
+    <title>WebChat | 朋友圈</title>
     <jsp:include page="view/include/commonfile.jsp"/>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">图书馆</strong> / <small>add</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">朋友圈</strong> / <small>add</small></div>
         </div>
         <div class="am-tabs am-margin">
              <div style="height: 30px;width: 1000px;">
