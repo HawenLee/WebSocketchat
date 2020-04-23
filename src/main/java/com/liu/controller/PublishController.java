@@ -21,7 +21,7 @@ public class PublishController {
 
     @RequestMapping("showPublishPage")
     public String showPublishPage(@RequestParam("page")int page, HttpServletRequest request){
-        if( request.getSession().getAttribute("pageSize") == null){ //判断煤业显示条数是否为空
+        if( request.getSession().getAttribute("pageSize") == null){ //判断每页显示条数是否为空
             request.getSession().setAttribute("pageSize", 20);//为空则设置为20
         }
         int pageSize = (Integer)request.getSession().getAttribute("pageSize");
