@@ -34,7 +34,7 @@
                     <c:forEach items="${userList}" var="user" varStatus="status">
                         <tr>
                             <td>${status.index + 1}</td>
-                            <td id="${user.id}">${user.userid}</td>
+                            <td id="${user.id}"><a class="a-click">${user.userid}</a></td>
                             <td>${user.nickname}</td>
                             <td>${user.sex}</td>
                             <td>${user.age}</td>
@@ -72,12 +72,21 @@
                 }
             }
         });
-        $("#showBookList").on("click",".a-click",getDetails);
+        $("#showBookList").on("click",".a-click",showUserInfo);
     });
-    function getDetails(){
+    function showUserInfo(){
+        var userType = ${userType};
+        var userid = $(this).html();
+        if(userType===0){
+            window.location.href = "showUserInfoPage?userid="+userid;
+        }else {
+            alert("该账号不具备管理员权限");
+        }
+        // console.log("TEST");
+        // console.log($(this).html());
         // var id = a.prev();
-        var bookId = $(this).parent().prev().attr("id");
-        window.location.href = "showBookDetails?bookId=" + bookId;
+        // var bookId = $(this).parent().prev().attr("id");
+        // window.location.href = "showBookDetails?bookId=" + bookId;
     }
 </script>
 </body>

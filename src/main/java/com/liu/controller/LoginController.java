@@ -43,6 +43,7 @@ public class LoginController {
 			User user2=new User();
 			user2.setUserid(user.getUserid());
 			user2.setLasttime(new DateUtil().getDateformat());
+			String userType = userService.getUserType(user.getUserid());
 //			修改最近一次登陆日志
             userService.updateUser(user2);
 			UserLog userLog=new UserLog();
@@ -55,6 +56,7 @@ public class LoginController {
             userLogService.insertLog(userLog);
 			int lognumber=userLogService.selectLogcountfromuserid(user.getUserid());
 			request.getSession().setAttribute("userid", user.getUserid());
+			request.getSession().setAttribute("userType", userType);
 			request.getSession().setAttribute("login_status", true);
 			request.getSession().setAttribute("lognumber", lognumber);
             redirectAttributes.addFlashAttribute("message",defined.LOGIN_SUCCESS);

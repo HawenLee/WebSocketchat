@@ -11,7 +11,14 @@ public class User {
 	    private String profile;     //简介
 	    private String firsttime;   //注册时间
 	    private String lasttime;    //最后登录时间
-	    private int status;      //账号资料是否公开（1公开-1不公开
+	    private int status;      //账号资料是否公开（1公开-1不公开)
+		private String type;     //管理员
+		public String getType() {
+			return type;
+		}
+		public void setType(String type) {
+			this.type = type;
+		}
 		public String getUserid() {
 			return userid;
 		}

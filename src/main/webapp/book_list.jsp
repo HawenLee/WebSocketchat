@@ -76,7 +76,12 @@
     }
 
     function showAddBookInfoPage(){
-        window.location.href = "showAddInfoPage";
+        var userType=${userType};
+        if(userType===0){
+            window.location.href = "showAddInfoPage";
+        }else {
+            alert("该账号不具备管理员权限");
+        }
     }
 
 

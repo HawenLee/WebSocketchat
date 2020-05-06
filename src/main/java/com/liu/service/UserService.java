@@ -17,4 +17,6 @@ public interface UserService {
 	int findExistUser(String userid);
 
     int selectCountForList(int pageSize);
+
+	String getUserType(String userid);
 }

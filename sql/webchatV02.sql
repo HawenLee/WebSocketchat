@@ -11,10 +11,10 @@
  Target Server Version : 50646
  File Encoding         : 65001
 
- Date: 24/04/2020 00:42:58
+ Date: 07/05/2020 00:06:07
 */
 
-SET NAMES utf8;
+SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -29,7 +29,7 @@ CREATE TABLE `book`  (
   `book_content` text CHARACTER SET utf8 COLLATE utf8_general_ci,
   `update_time` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of book
@@ -46,8 +46,6 @@ INSERT INTO `book` VALUES (9, '复活（精）', '复活（精）', '世界名�
 INSERT INTO `book` VALUES (10, '互洽共生：明代商人商业与国家体制关系探研', '互洽共生：明代商人商业与国家体制关系探研', '历史', '　　《互洽共生：明代商人、商业与国家体制关系探研/中国历史研究学术文库》为“中国历史研究学术文库”之一。书中全面探讨了明代商人、商业与国家体制的关系，具体分析了明代的商业政策、商业管理和商税征收及侵剥商权的行为、商人的法权地位、明代国家同商人的合作、商税征收、士商关系等，揭示出明代商业发展与国家体制之间关系的一般特征，即明代商品经济繁荣与帝制体系强固并行，双方磨合为一基本洽和局面，达成一种互适共生的历史演进态势。', '2020-04-22 00:41:31');
 INSERT INTO `book` VALUES (11, '亚洲认识：中国与日本近现代思想史学研究', '亚洲认识：中国与日本近现代思想史学研究', '历史', '　　本稿研究近现代中日“亚洲认识”。何为亚洲？亚洲不仅是地理概念，还是文化概念。说起亚洲，人们不仅想起欧洲东边的沙漠、草原、山地与平原，同时又去思考区别于“西方”的亚洲历史、文化、政治与经济实质。本稿之写作新意在于：讨论进入近代以来，逐步具备世界眼光的中日知识人，如何开展对“亚洲”历史时空的回顾、东西特征的辨认、东方道路的探寻及文明前景的展望。', '2020-04-22 00:43:15');
 INSERT INTO `book` VALUES (12, '中国国家博物馆馆藏文物研究丛书：瓦当卷', '中国国家博物馆馆藏文物研究丛书：瓦当卷', '历史', '　　瓦当是中国古代建筑的重要构件，该书结合国家博物馆馆藏瓦当，查阅了大量已发表的文物考古资料，认真参考了前人的研究成果，对于馆藏的瓦当按出土时代、地区、以及形状和内容进行了重新归类和深入的分析、研究。对于某些瓦当的定名和认识，提出了自己的见解，且有一定的认识深度。', '2020-04-22 00:44:09');
-INSERT INTO `book` VALUES (13, '1234', '1234', '1234', '1234', '2020-04-23 01:10:04');
-INSERT INTO `book` VALUES (14, 'Test', 't', 't', 't', '2020-04-23 02:09:55');
 
 -- ----------------------------
 -- Table structure for friends
@@ -72,7 +70,7 @@ CREATE TABLE `log`  (
   `DETAIL` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `IP` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of log
@@ -139,6 +137,45 @@ INSERT INTO `log` VALUES (59, 'Hawen', '2020-04-23 23:57:13', '登陆', '用户�
 INSERT INTO `log` VALUES (60, 'Hawen', '2020-04-24 00:02:01', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
 INSERT INTO `log` VALUES (61, 'Hawen', '2020-04-24 00:04:50', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
 INSERT INTO `log` VALUES (62, 'liu', '2020-04-24 00:16:19', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (63, 'Hawen', '2020-04-24 20:42:21', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (64, 'Hawen', '2020-04-24 22:09:19', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (65, 'Hawen', '2020-04-24 22:13:01', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (66, 'Hawen', '2020-04-24 22:13:09', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (67, 'Hawen', '2020-04-24 22:13:35', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (68, 'Hawen', '2020-04-24 22:13:52', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (69, 'liu', '2020-04-24 22:51:39', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (70, 'Hawen', '2020-05-06 21:23:06', '��½', '�û���¼', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (71, 'liu', '2020-05-06 21:28:04', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (72, 'Hawen', '2020-05-06 21:34:01', '登陆', '用户登录', '192.168.31.124');
+INSERT INTO `log` VALUES (73, 'liu', '2020-05-06 22:11:13', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (74, 'liu', '2020-05-06 22:15:26', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (75, 'Hawen', '2020-05-06 22:20:23', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (76, 'liu', '2020-05-06 22:30:06', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (77, 'Hawen', '2020-05-06 22:33:19', '登陆', '用户登录', '192.168.31.124');
+INSERT INTO `log` VALUES (78, 'liu', '2020-05-06 22:44:46', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (79, 'liu', '2020-05-06 23:02:42', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (80, 'liu', '2020-05-06 23:06:50', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (81, 'liu', '2020-05-06 23:08:42', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (82, 'liu', '2020-05-06 23:09:39', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (83, 'liu', '2020-05-06 23:10:38', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (84, 'liu', '2020-05-06 23:11:25', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (85, 'liu', '2020-05-06 23:12:49', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (86, 'liu', '2020-05-06 23:21:33', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (87, 'liu', '2020-05-06 23:29:11', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (88, 'Rose', '2020-05-06 23:49:37', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (89, 'Josh', '2020-05-06 23:50:15', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (90, 'Josh', '2020-05-06 23:50:44', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (91, 'josh', '2020-05-06 23:50:58', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (92, 'josh', '2020-05-06 23:51:18', '修改', '修改头像', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (93, 'liu', '2020-05-06 23:51:28', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (94, 'Josh', '2020-05-06 23:51:34', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (95, '345', '2020-05-06 23:52:09', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (96, '345', '2020-05-06 23:52:17', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (97, '345', '2020-05-06 23:52:27', '修改', '修改头像', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (98, 'liu', '2020-05-06 23:52:44', '登陆', '用户登录', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (99, '345', '2020-05-06 23:52:51', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (100, 'Josh', '2020-05-06 23:53:35', '修改', '修改资料', '0:0:0:0:0:0:0:1');
+INSERT INTO `log` VALUES (101, 'Josh', '2020-05-06 23:57:56', '修改', '修改资料', '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for publish
@@ -180,17 +217,18 @@ CREATE TABLE `user`  (
   `FIRSTTIME` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `LASTTIME` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `STATUS` int(10) DEFAULT NULL,
+  `TYPE` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID`, `USERID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'Hawen', '123456', '哈文', 1, 19, '/information/upload/Hawen/3.jpg', 'test', '2020-04-19 18:14:19', '2020-04-24 00:04:50', 1);
-INSERT INTO `user` VALUES (2, 'Josh', '123456', '琼', 1, 19, '/information/upload/Hawen/file1.jpg', 'test', '2020-04-19 18:14:19', '2020-04-19 23:16:53', 1);
-INSERT INTO `user` VALUES (3, 'Rose', '123456', '罗斯', 1, 19, '/information/upload/Hawen/file1.jpg', 'test', '2020-04-19 18:14:19', '2020-04-19 21:53:29', 1);
-INSERT INTO `user` VALUES (4, 'Test', '123456', '无', 1, 20, '/information/upload/Test/file1.jpg', 'test123456', '2020-04-20 00:37:53', '2020-04-20 00:38:01', 1);
-INSERT INTO `user` VALUES (10, '345', '345', '无', 0, 0, NULL, NULL, '2020-04-23 19:24:41', NULL, 0);
-INSERT INTO `user` VALUES (11, 'liu', '123456', '啊助', 1, 20, 'information\\upload\\liu\\muse.jpg', '我很帅！！！', '2020-04-23 19:26:32', '2020-04-24 00:16:19', 1);
+INSERT INTO `user` VALUES (1, 'Hawen', '123456', '哈文', 1, 14, '/information/upload/Hawen/3.jpg', 'test22222', '2020-04-19 18:14:19', '2020-05-06 22:33:19', 1, '1');
+INSERT INTO `user` VALUES (2, 'Josh', '123456', '琼12222', 1, 60, 'information\\upload\\josh\\open.png', 'test123432', '2020-04-19 18:14:19', '2020-05-06 23:50:58', 1, '1');
+INSERT INTO `user` VALUES (3, 'Rose', '123456', '罗斯', 1, 19, '/information/upload/Hawen/file1.jpg', 'test', '2020-04-19 18:14:19', '2020-04-19 21:53:29', 1, '1');
+INSERT INTO `user` VALUES (4, 'Test', '123456', '无', 1, 20, '/information/upload/Test/file1.jpg', 'test123456', '2020-04-20 00:37:53', '2020-04-20 00:38:01', 1, '1');
+INSERT INTO `user` VALUES (10, '345', '345', '2345', 2, 80, 'information\\upload\\345\\right.png', 'lajid', '2020-04-23 19:24:41', '2020-05-06 23:52:17', 0, '1');
+INSERT INTO `user` VALUES (11, 'liu', '123456', '琼', 2, 19, 'information\\upload\\liu\\muse.jpg', 'test', '2020-04-23 19:26:32', '2020-05-06 23:52:43', 1, '0');
 
 SET FOREIGN_KEY_CHECKS = 1;

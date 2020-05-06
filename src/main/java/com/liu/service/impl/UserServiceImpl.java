@@ -54,4 +54,9 @@ public class UserServiceImpl implements UserService {
 		return result%pageSize==0?result/pageSize:result/pageSize+1;
 	}
 
+	@Override
+	public String getUserType(String userid) {
+		return userDao.getUserType(userid);
+	}
+
 }

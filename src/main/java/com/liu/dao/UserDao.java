@@ -15,4 +15,6 @@ public interface UserDao {
 	boolean deleteUser(String userid);
 
 	int findExistsUser(@Param("userid") String userid);
+
+	String getUserType(String userid);
 }

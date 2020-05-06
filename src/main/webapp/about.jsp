@@ -35,16 +35,12 @@
 
                 <div class="am-tab-panel am-fade am-in" id="tab2">
                     <hr>
-                    <blockquote>
-                        <p><a href="https://github.com/SinceNovember" target="_blank">https://github.com/SinceNovember</a></p>
-                    </blockquote>
+                    <blockquote></blockquote>
                 </div>
 
                 <div class="am-tab-panel am-fade am-in" id="tab3">
                     <hr>
-                    <blockquote>
-                        <p>欢迎访问我的github, <a href="https://github.com/SinceNovember" target="_blank">github.com/SinceNovember</a></p>
-                    </blockquote>
+                    <blockquote></blockquote>
                 </div>
             </div>
         </div>

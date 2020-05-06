@@ -238,6 +238,45 @@ public class UserController {
 			return "redirect:/information/"+userid;
 		}
 	}
+
+	@RequestMapping("showUserInfoPage")
+	public String showUserInfoPage(String userid,HttpServletRequest request,RedirectAttributes redirectAttributes){
+		User user = userService.selectUserByUserId(userid);
+		int status=user.getStatus();
+		if(status==-1) {
+			redirectAttributes.addFlashAttribute("error", userid+"的信息未公开!");
+			redirectAttributes.addFlashAttribute("userid", userid);
+			return "redirect:/errorinfo";
+		} else {
+			request.getSession().setAttribute("user", user);
+			return "userInfo";
+		}
+	}
+	//	修改用户信息
+	@RequestMapping("/updateOtherUser")
+	public String updateOtherUser(User user,RedirectAttributes redirectAttributes,HttpServletRequest request){
+		boolean flag=userService.updateUser(user);
+		if(flag) {
+			UserLog userLog=new UserLog();
+			String ip=request.getRemoteAddr();
+			userLog.setUserid(user.getUserid());
+			userLog.setTime(dateUtil.getDateformat());
+			userLog.setType("修改");
+			userLog.setDetail("修改资料");
+			userLog.setIp(ip);
+			userLogService.insertLog(userLog);
+			redirectAttributes.addFlashAttribute("message", "["+user.getUserid()+"]资料修改成功!");
+			return "redirect:/information/"+user.getUserid();
+		}else{
+			redirectAttributes.addFlashAttribute("error", "["+user.getUserid()+"]资料修改失败!");
+			return "redirect:/information/"+user.getUserid();
+		}
+
+	}
+
+
+
+
 	@RequestMapping("errorinfo")
 	public String error() {
 		return "errorinfo";
